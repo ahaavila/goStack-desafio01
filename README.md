@@ -26,7 +26,7 @@
     <img alt="Repository issues" src="https://img.shields.io/github/issues/ahaavila/goStack-desafio01.svg">
   </a>
   
-  <img alt="GitHub" src="https://img.shields.io/github/license/ahaavila/goStack-desafio01k"> 
+  <img alt="GitHub" src="https://img.shields.io/github/license/ahaavila/goStack-desafio01"> 
   
 </p>
 
