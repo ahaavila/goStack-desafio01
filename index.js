@@ -8,6 +8,27 @@ const projects = [];
 
 // Routes
 
+function checkProjectExists(req, res, next) {
+  const { id } = req.params;
+
+  const project = projects.find(p => p.id == id);
+
+  if(!project) {
+    return res.status(400).json({ error: 'The project does not exists'});
+  }
+
+  return next();
+};
+
+function logRequests(req, res, next) {
+  console.count("Número de requisições: ");
+
+  return next();
+}
+
+server.use(logRequests);
+
+
 // Criando um projeto
 server.post('/projects', (req, res) => {
   const { id, title } = req.body;
@@ -29,7 +50,7 @@ server.get('/projects', (req, res) => {
 });
 
 // Alterando um projeto
-server.put('/projects/:id', (req, res) => {
+server.put('/projects/:id', checkProjectExists, (req, res) => {
   const { title } = req.body;
   const { id } = req.params;
 
@@ -41,7 +62,7 @@ server.put('/projects/:id', (req, res) => {
 });
 
 // Deletando um projeto
-server.delete('/projects/:id', (req, res) => {
+server.delete('/projects/:id', checkProjectExists, (req, res) => {
   const { id } = req.params;
 
   const projectIndex = projects.findIndex(p => p.id == id);
@@ -52,7 +73,7 @@ server.delete('/projects/:id', (req, res) => {
 });
 
 // Adicionando as tarefas
-server.post('/projects/:id/tasks', (req, res) => {
+server.post('/projects/:id/tasks', checkProjectExists, (req, res) => {
   const { id } = req.params;
   const { title } = req.body;
 
