@@ -1,4 +1,6 @@
 <h1 align="center">
+    <img alt="Full Stack Instagram Clone" src="https://skylab.rocketseat.com.br/api/files/1560759053914.svg" />
+    <br>
     BackEnd GoStack Challenge 01 <br />
     Node.js
 </h1>
